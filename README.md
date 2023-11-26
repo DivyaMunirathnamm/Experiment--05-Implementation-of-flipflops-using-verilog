@@ -1,9 +1,17 @@
-# Experiment--05-Implementation-of-flipflops-using-verilog
-### AIM: To implement all the flipflops using verilog and validating their functionality using their functional tables
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+```
+Developed by: Divya M
+RegisterNumber:23013162
+```
+### Experiment--05-Implementation-of-flipflops-using-verilog
+### AIM: 
+To implement all the flipflops using verilog and validating their functionality using their functional tables
+### HARDWARE REQUIRED: 
+– PC, Cyclone II , USB flasher
+### SOFTWARE REQUIRED: 
+Quartus prime
 ### THEORY 
 SR Flip-Flop
+
 SR flip-flop operates with only positive clock transitions or negative clock transitions. Whereas, SR latch operates with enable signal. The circuit diagram of SR flip-flop is shown in the following figure.
 
 ![image](https://user-images.githubusercontent.com/36288975/167910294-bb550548-b1dc-4cba-9044-31d9037d476b.png)
@@ -102,39 +110,111 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
 ### Procedure
-/* write all the steps invloved */
+1.Create a project with required entities.
 
+2.Create a module along with respective file name.
 
+3.Run the respective programs for the given boolean equations.
+
+4.Run the module and get the respective RTL outputs.
+
+5.Create university program(VWF) for getting timing diagram.
+
+6.Give the respective inputs for timing diagram and obtain the results.
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+## SR FLIPFLOP:
+```
+module srf11(s,r,clk,q,qbar);
+input s,r,clk;
+output reg q;
+output qbar;
+always@(posedge clk)
+begin 
+q=s|((~r)&q);
+end 
+assign qbar=~q;
+endmodule
+```
+## JK FLIPFLOP:
+```
+module jkff1(j,k,clk,q,qbar);
+input j,k,clk;
+output reg q;
+output reg qbar;
+initial q=0;
+initial qbar=1;
+always @(posedge clk)
+begin
+q=(j&(~q))|((~k)&q);
+qbar=((~j)&q)|(k &(~q));
+end 
+endmodule
+```
+## D FLIPFLOP:
+```
+module dff1(d,clk,q,qbar);
+input d,clk;
+output reg q;
+output qbar;
+always@(posedge clk)
+begin 
+q=d;
+end
+assign qbar=~q;
+endmodule
+```
+## T FLIPFLOP:
+```
+module tff1(t,clk,q,qbar);
+input t,clk;
+output reg q;
+output qbar;
+always@(posedge clk)
+begin
+q=q^t;
+end 
+assign qbar=~q;
+endmodule
+```
 */
-
-
-
-
 
 
 ### RTL LOGIC FOR FLIPFLOPS 
 
+## SR FLIPFLOP:
+
+![Screenshot (196)](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/160243c6-1b1a-4273-b3de-ab35d6cca809)
+
+## JK FLIPFLOP:
+
+![Screenshot (198)](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/c1891a24-4d56-4b1c-addd-48f418c80c2f)
+
+## D FLIPFLOP:
+
+![Screenshot (194)](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/e95727ec-67ba-493b-9246-9afb05bed50f)
+
+## T FLIPFLOP:
+![Screenshot (195)](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/14e8c875-a422-4522-9cab-3be112e74dca)
 
 
+### TIMING DIGRAMS FOR FLIP FLOPS:
+
+## SR FLIPFLOP:
+![image](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/bb017690-fccf-49b0-9166-90915a268a48)
 
 
+## JK FLIPFLOP:
+![image](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/49aca08a-16de-4d5e-9a8e-d60709bd02d4)
 
+## D FLIPFLOP:
+![image](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/4161f247-763a-4831-855a-39620987b64d)
 
+## T FLIPFLOP:
 
+![image](https://github.com/DivyaMunirathnamm/Experiment--05-Implementation-of-flipflops-using-verilog/assets/147474097/79ec525e-3a36-4950-b6fe-54895bf42cb7)
 
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
-
-### RESULTS 
+### RESULTS:
+All the flipflops are implemented using verilog and their functionality has been validated using their functional tables.
